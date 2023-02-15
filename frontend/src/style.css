@@ -1,0 +1,47 @@
+body{
+    background: #46484a;
+}
+img{
+    float: left;
+    border: black solid 3px;
+}
+p{
+    color: white;
+}
+.searchInput{
+    transform: translate(0, -2px);
+    width: 125px;
+    height: 60px;
+    border:  solid black 7px;
+    border-radius: 10px;
+    background-color: aqua;
+    font-size: 25px;
+    cursor: pointer;
+}
+.searchBar{
+    background-color: black;
+    color: white;
+    width: 25%;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 10px;
+}
+.search{
+    width: 100%;
+    text-align: center;
+}
+.overlap{
+    position: absolute;
+    top: 2%;
+    right: 1%;
+}
+.channelBox{
+    position: relative;
+    text-indent: 5px;
+    background: linear-gradient(45deg, #7f07e8, #34c0eb);
+    width: 100%;
+    height: fit-content;
+    border: solid white 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
