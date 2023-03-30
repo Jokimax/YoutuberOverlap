@@ -4,7 +4,7 @@ const eventEmitter = require('events');
 
 const event = new eventEmitter();
 const app = express();
-const apiKey="&key="+"[YOUTUBE_API_KEY]";
+const apiKey="&key="+"[Youtube_API_Key]";
 const baseUrl = "https://youtube.googleapis.com/youtube/v3";
 app.use(bodyParser.json());
 
@@ -46,12 +46,15 @@ async function getSubs(id){
         .then((response) => response.json());
         if(typeof userSubs.items !== 'undefined')
         channelsChecked++;
-        while(true){
+        userSubs.items.forEach(item => {
+            addChannel(item.snippet);
+        });
+        while(typeof userSubs.nextPageToken !== 'undefined'){
+            userSubs = await fetch(baseUrl+"/subscriptions?part=snippet&channelId="+id+"&maxResults=100&pageToken="+userSubs.nextPageToken+apiKey)
+            .then((response) => response.json());
             userSubs.items.forEach(item => {
                 addChannel(item.snippet);
             });
-            userSubs = await fetch(baseUrl+"/subscriptions?part=snippet&channelId="+id+"&maxResults=100&pageToken="+userSubs.nextPageToken+apiKey)
-            .then((response) => response.json());
         }
     }
     catch(error){}
